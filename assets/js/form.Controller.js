@@ -23,7 +23,6 @@ const form = (function (dataAccess, modalActions, toDo, domManipulations, formFi
         Object.keys(formInputs).forEach(function (key) {
             project[key] = formInputs[key].element.val();
         });
-        project.id =
         (isEdit) ? editMode(editIndex) : addMode();
         modalActions.editParam.toggle = false;
     }
