@@ -12,7 +12,6 @@ const form = (function (dataAccess, modalActions, toDo, domManipulations, formFi
     const formInputs = formFields.getFormFields();
     let $saveButton = $('#save'),
       project = {};
-    const data = dataAccess.getData();
 
     $saveButton.on('click', addItemToData);
 
