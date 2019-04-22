@@ -1,0 +1,292 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+html {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+body {
+  overflow-x: hidden; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Bold.eot");
+  src: url("../fonts/OpenSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold.woff2") format("woff2"), url("../fonts/OpenSans-Bold.woff") format("woff"), url("../fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans.eot");
+  src: url("../fonts/OpenSans.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans.woff2") format("woff2"), url("../fonts/OpenSans.woff") format("woff"), url("../fonts/OpenSans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Light.eot");
+  src: url("../fonts/OpenSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light.woff2") format("woff2"), url("../fonts/OpenSans-Light.woff") format("woff"), url("../fonts/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+.btn {
+  font: 14px "OpenSans";
+  color: #000;
+  cursor: pointer; }
+
+.todo-list {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 0;
+  border-radius: 0.25rem;
+  padding: 15px;
+  overflow-y: scroll;
+  height: 560px; }
+  .todo-list:last-child {
+    margin-bottom: 0; }
+
+.task__title {
+  font: 26px "OpenSans";
+  color: #000;
+  margin-bottom: 15px; }
+  .task__title:first-letter {
+    text-transform: uppercase; }
+.task__name {
+  font: 18px "OpenSans";
+  color: #000; }
+.task__priority {
+  font: 18px "OpenSans";
+  color: #000; }
+.task__buttons {
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
+.description {
+  font: 14px "OpenSans";
+  color: #000;
+  display: none; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.36); }
+  .modal_opened {
+    display: flex; }
+  .modal__content {
+    border-radius: 10px;
+    height: 600px;
+    background: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 40px 25px 15px 25px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: animatetop 0.4s ease-in; }
+  .modal__container {
+    width: 100%; }
+  .modal__head {
+    text-align: center;
+    font: 32px "OpenSans";
+    color: #000; }
+  .modal__row {
+    margin: 15px 0;
+    align-items: center;
+    font: 14px "OpenSans";
+    color: #000; }
+
+.close {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  top: 10px;
+  right: 10px; }
+  .close:before, .close:after {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 33px;
+    width: 1px;
+    background: #242424;
+    left: 50%; }
+  .close:before {
+    transform: translateX(-50%) rotate(45deg); }
+  .close:after {
+    transform: translateX(-50%) rotate(-45deg); }
+  .close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer; }
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+.form__container {
+  width: 100%; }
+.form__item {
+  margin-bottom: 20px; }
+
+.input {
+  display: block;
+  background: transparent;
+  letter-spacing: 0.1em;
+  line-height: 1.125em;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  height: 32px;
+  border: 2px solid #c1c1c1;
+  font: 16px "OpenSans";
+  font-weight: 300;
+  border-radius: 5px; }
+
+.textarea {
+  border-radius: 5px;
+  border: 2px solid #c1c1c1;
+  font: 16px "OpenSans"; }
+
+.has-error {
+  border-color: #d3004f; }
+
+.has-success {
+  border-color: #8df70c; }
+
+.sorting {
+  max-width: 176px;
+  background: #ddd;
+  position: relative;
+  display: block;
+  text-align: left;
+  padding: 6px 20px; }
+  .sorting__placeholder {
+    position: relative;
+    display: block;
+    z-index: 1;
+    cursor: pointer;
+    color: #000;
+    font: 14px "OpenSans";
+    font-weight: 300;
+    letter-spacing: 0.35px; }
+  .sorting-list {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    background: #fff;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    z-index: 100;
+    max-height: 120px;
+    background: #ddd;
+    box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.5); }
+    .sorting-list__item {
+      display: block;
+      text-align: left;
+      padding: 6px 20px;
+      color: #000;
+      font: 12px "OpenSans";
+      font-weight: 300;
+      letter-spacing: 0.35px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.52); }
+      .sorting-list__item:last-child {
+        border-bottom: none; }
+  .sorting__checkbox {
+    font: 14px "OpenSans";
+    font-weight: 300; }
+
+.arrow {
+  height: 12px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.1s ease; }
+  .arrow svg {
+    width: 12px;
+    height: 12px; }
+  .arrow-style {
+    fill: none;
+    stroke: #000;
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-miterlimit: 10; }
+
+.is-open .sorting-list {
+  display: block; }
+.is-open .arrow {
+  transform: translateY(-50%) rotate(180deg); }
+
+.priority {
+  color: #000;
+  font: 14px "OpenSans"; }
+  .priority-select {
+    width: 100%;
+    padding: 5px 7px;
+    outline: 0;
+    background: #ddd;
+    border-radius: 5px;
+    height: 32px; }
+
+/*# sourceMappingURL=style.css.map */
