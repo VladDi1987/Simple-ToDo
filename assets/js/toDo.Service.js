@@ -19,7 +19,7 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
     function drawList(arr) {
         let list = '';
         for (let key in arr) {
-            list += `<div class="list-group-item">
+            list += `<li class="list-group-item">
                       <h2 class="task__title mb-3"> ${arr[key].title}  </h2>
                          <div class="task__info">
                             <div class="row mb-3">
@@ -29,12 +29,12 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
                                      ${arr[key].description}
                                  </p>
                                 <div class="task__buttons row justify-content-between">
-                                     <div class="btn btn-secondary btn_change col-md-3 mt-2 mt-md-0" index="${key} ">Изменить</div>
-                                     <div class="btn btn-danger btn_remove col-md-3 mt-2 mt-md-0" index="${key} ">Закрыть</div>
-                                     <div class="btn btn-info col-md-3 mt-2 mt-md-0" index="${key} ">Развернуть</div>
+                                     <div class="btn btn-secondary btn_change col-md-3 mt-2 mt-md-0" index="${key}">Изменить</div>
+                                     <div class="btn btn-danger btn_remove col-md-3 mt-2 mt-md-0" index="${key}">Закрыть</div>
+                                     <div class="btn btn-info col-md-3 mt-2 mt-md-0" index="${key}">Развернуть</div>
                                 </div>
                              </div>
-                          </div>`;
+                          </li>`;
         }
         $toDoList.html(list);
         $removeButtons = $('.btn_remove');

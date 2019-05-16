@@ -1,13 +1,37 @@
 .todo
   &-list
-    border: 1px solid rgba(0, 0, 0, 0.125)
     margin-bottom: 0
     border-radius: 0.25rem
     padding: 15px
     overflow-y: scroll
     height: 560px
-    &:last-child
-      margin-bottom: 0
+    counter-reset: gradient-counter
+    & li
+      border-radius: 0 0.5rem 0.5rem 0.5rem
+      background: $white
+      background: linear-gradient(307deg, transparent 0%, transparent 53%, $white 53%, #f0f4f5 100%), linear-gradient(to bottom, #ffffff 0%, #f0f4f5 100%)
+      counter-increment: gradient-counter
+      margin-top: 1rem
+      position: relative
+      box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05)
+      &:before,
+      &:after
+        @include pseudo
+        box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05)
+        border-radius: 1rem
+        height: 2rem
+        left: -1rem
+        overflow: hidden
+        top: -1rem
+        width: 2rem
+        display: flex
+        justify-content: center
+        align-items: center
+        font: 12px $OpenSansFont
+        color: $black
+        font-weight: bold
+      &:before
+        content: counter(gradient-counter)
 
 .task
   &__title

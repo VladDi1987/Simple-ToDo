@@ -43,7 +43,6 @@ const dataAccess = (function (localStorageServices) {
             }
         ];*/
 
-
     const data = localStorageServices.getLocalStorageData();
 
     function getData() {
