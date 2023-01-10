@@ -1,30 +1,29 @@
-import dataAccess from '../js/access.Service';
+import dataAccess from './access.service';
 
 const IdController = (function (dataAccess) {
     'use strict';
 
     const data = dataAccess.getData();
-
-    let randomDiapazone = {
+    const randomRange = {
         min: 1,
         max: 100
     };
 
     function getUniqueID() {
-        let generatedID = getRandomNumber(randomDiapazone.min, randomDiapazone.max);
+        let generatedID = getRandomNumber(randomRange.min, randomRange.max);
         return checkedIDs(data, generatedID)
           ? getUniqueID()
           : generatedID;
     }
 
     function checkedIDs(array, value) {
-        let findedObj = array.find(function (obj) {
+        let obj = array.find(function (obj) {
             if(obj && obj.id === value) {
                 return obj;
             }
         });
-        console.log(findedObj);
-        return !!findedObj && findedObj.id;
+        //console.log(obj);
+        return !!obj && obj.id;
     }
 
     function getRandomNumber(min, max) {

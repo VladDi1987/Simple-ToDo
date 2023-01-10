@@ -1,20 +1,19 @@
 import $ from 'jquery';
-import dataAccess from '../js/access.Service';
-import domManipulations from '../js/domManipulations';
-import modalActions from '../js/modalActions';
-import localStorageServices from '../js/localStorage.Services';
+import dataAccess from './access.service';
+import domService from './dom.service';
+import modalActionsService from './modal-actions.service';
+import storageServices from './storage.services';
 
 const toDo = (function (dataAccess, domManipulations, modalActions, localStorageServices) {
     'use strict';
 
-    let $toDoList = $('#todo'),
-      $isPrioritySelected = $('#isPrioritySelected'),
-      $projectSelectList = $('#project-list'),
-      defaultSelect = 'all',
-      currentProject = null,
-      $removeButtons = null,
-      $infoButtons = null,
-      $editButtons = null;
+    const $toDoList = $('#todo');
+    const $isPrioritySelected = $('#isPrioritySelected');
+    const $projectSelectList = $('#project-list');
+    let defaultSelect = null;
+    let $removeButtons = null;
+    let $infoButtons = null;
+    let $editButtons = null;
 
     function drawList(arr) {
         let list = '';
@@ -23,15 +22,15 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
                       <h2 class="task__title mb-3"> ${arr[key].title}  </h2>
                          <div class="task__info">
                             <div class="row mb-3">
-                               <div class="task__name col-md-6"><span>Проект: </span> ${arr[key].name} </div>
+                               <div class="task__name col-md-6"><span>Project: </span> ${arr[key].name} </div>
                                <div class="task__priority col-md-6 text-md-right"><span>Priority: </span> ${arr[key].priority} </div></div>
                                  <p class="description text-justify mb-3">
                                      ${arr[key].description}
                                  </p>
                                 <div class="task__buttons row justify-content-between">
-                                     <div class="btn btn-secondary btn_change col-md-3 mt-2 mt-md-0" index="${key}">Изменить</div>
-                                     <div class="btn btn-danger btn_remove col-md-3 mt-2 mt-md-0" index="${key}">Закрыть</div>
-                                     <div class="btn btn-info col-md-3 mt-2 mt-md-0" index="${key}">Развернуть</div>
+                                     <div class="btn btn-secondary btn_change col-md-3 mt-2 mt-md-0" index="${key}">Change</div>
+                                     <div class="btn btn-danger btn_remove col-md-3 mt-2 mt-md-0" index="${key}">Close</div>
+                                     <div class="btn btn-info col-md-3 mt-2 mt-md-0" index="${key}">Open</div>
                                 </div>
                              </div>
                           </li>`;
@@ -72,21 +71,21 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
 
     function drawProjectList(data) {
         let optionsList = '';
-        for (let j in  data) {
-            optionsList += '<option value="' + j + '">' + j + '</option>';
-        }
-        $projectSelectList.html('<option value="' + defaultSelect + '">' + 'Все' + '</option>' + optionsList);
+        const defaultSelect = {name: 'All', value: ''};
+        const list = [defaultSelect, ...data];
+        list.forEach(function (item) {
+            optionsList += `<option value=${item.value}>${item.name}</option>`;
+        })
+        $projectSelectList.html(optionsList);
     }
 
     function priorityControl() {
         $isPrioritySelected.on('change', function () {
             if ($isPrioritySelected.prop('checked')) {
                 //console.log('checked');
-                dataAccess.getDataByPriority();
                 domManipulations.destroyLists();
                 displayLists(dataAccess.getDataByPriority());
-            }
-            else {
+            } else {
                 //console.log('not checked');
                 domManipulations.destroyLists();
                 displayLists(dataAccess.getData());
@@ -111,32 +110,29 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
 
     function getProjectName() {
         $projectSelectList.on('change', function () {
-            currentProject = $(this).val();
-            getDataByProjectName();
+            getDataByProjectName($(this).val());
         });
     }
 
-    function getDataByProjectName() {
-        if (currentProject === defaultSelect) {
+    function getDataByProjectName(projectName) {
+        if (projectName) {
+            domManipulations.destroyToDoList();
+            filterByProjectName(dataAccess.getData(), projectName);
+        } else {
             domManipulations.destroyToDoList();
             displayLists(dataAccess.getData());
         }
-        else {
-            //console.log('else');
-            domManipulations.destroyToDoList();
-            filterByProjectName(dataAccess.getData());
-        }
     }
 
-    function filterByProjectName(arr) {
-        let newData = arr.filter(function (item) {
-            if (item.name === currentProject) {
+    function filterByProjectName(arr, projectName) {
+        let array = arr.filter(function (item) {
+            if (item.name === projectName) {
                 return item;
             }
         });
         //console.log(newData);
         domManipulations.destroyToDoList();
-        drawList(newData);
+        drawList(array);
     }
 
     function displayLists(data) {
@@ -157,6 +153,6 @@ const toDo = (function (dataAccess, domManipulations, modalActions, localStorage
     }
 
 
-})(dataAccess, domManipulations, modalActions, localStorageServices);
+})(dataAccess, domService, modalActionsService, storageServices);
 
 export default toDo;

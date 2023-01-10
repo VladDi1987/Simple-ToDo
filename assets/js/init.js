@@ -1,18 +1,19 @@
-import modalsController from '../js/modals.Controller';
-import toDo from '../js/ToDo.Service';
-import form from '../js/form.Controller';
-import localStorageServices from '../js/localStorage.Services';
-import validationService from '../js/formValidation.Service';
-import IdController from './id.Service';
+import toDo from './to-do.service';
+import form from './form-actions.service';
+import storageServices from './storage.services';
+import validationService from './form-validation.service';
+import IdController from './id-generator.service';
+import modalActionsService from "./modal-actions.service";
 
-(function (modalsController, toDo) {
+(function (modalActionsService, validationService,toDo) {
     'use strict';
 
     activate();
 
     function activate() {
-        modalsController.modals();
+        modalActionsService.modals();
+        validationService.init();
         toDo.init();
     }
 
-})(modalsController, toDo);
+})(modalActionsService, validationService, toDo);

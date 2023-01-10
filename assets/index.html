@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="author" content="Vlad Dyshliuk">
     <meta name="description" content="">
-    <!--<meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>index</title>
+    <title>Test</title>
 </head>
 <body>
 
 <div class="page">
-    <div class="container">
+    <div class="container page-wrapper">
         <div class="row justify-content-center pt-3">
             <ul id="todo" class="todo-list list-group col-md-8 col-xl-6">
 
@@ -23,12 +23,12 @@
             <div class="col-md-8 col-xl-6 mt-5 p-md-0">
                 <div class="row p-0">
                     <div class="col-md-4 align-self-center">
-                        <div id="open-modal" class="btn btn-secondary mb-4 mb-md-0">Новая задача</div>
+                        <div id="open-modal" class="btn btn-secondary mb-4 mb-md-0">New task</div>
                     </div>
                     <div class="sorting__checkbox col-md-4 align-self-center mb-4 mb-md-0">
                         <input id="isPrioritySelected" type="checkbox" class="">
                         <label for="isPrioritySelected" class="toggle">
-                            <span class="toggle__text">по приоритету</span>
+                            <span class="toggle__text">By Priority</span>
                             <span class="toggle__dot"></span>
                         </label>
                     </div>
@@ -39,23 +39,23 @@
             </div>
         </div>
 
-        <div id="myModal" class="modal">
+        <div id="modal" class="modal">
             <!-- Modal content -->
             <div class="modal__content">
-                <h2 class="modal__head">Добавить</h2>
-                <div class="modal__container container p-0">
+                <h2 class="modal__head">Add</h2>
+                <form action="#" name="project" class="modal__container container p-0">
                     <div class="modal__row row p-0">
-                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Название задачи</p>
-                        <input type="text" id="project-title" class="input col-md-12 col-xl-8">
+                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Project Title</p>
+                        <input type="text" id="title" name="title" class="input col-md-12 col-xl-8" required>
                     </div>
                     <div class="modal__row row">
-                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Название проекта</p>
-                        <input type="text" id="project-name" class="input col-md-12 col-xl-8">
+                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Project Name</p>
+                        <input type="text" id="name" name="name" class="input col-md-12 col-xl-8" required>
                     </div>
                     <div class="modal__row row p-0">
-                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Приоритет</p>
+                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Priority</p>
                         <div class="col-md-12 col-xl-8 p-0 pr-xl-3">
-                            <select name="priority-select" id="project-priority" class="priority-select">
+                            <select id="priority"  name="priority" class="priority-select">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -63,18 +63,19 @@
                         </div>
                     </div>
                     <div class="modal__row row align-items-start">
-                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Описание</p>
-                        <textarea id="project-description" rows="5" cols="35" name="text" class="textarea col-md-12 col-xl-8"></textarea>
+                        <p class="col-md-5 col-xl-4 text-left text-xl-right p-0 pr-xl-3">Description</p>
+                        <textarea id="description" rows="5" cols="35" name="description" class="textarea col-md-12 col-xl-8"></textarea>
                     </div>
                     <div class="modal__row btn-wrap row justify-content-end">
                         <div class="col-md-8 p-0">
                             <div class="row m-0 flex-md-row justify-content-between">
-                                <div id="save" class="btn btn-success col-md-4 mb-3 mb-md-0">Сохранить</div>
-                                <div id="cancel" class="btn btn-danger col-md-4">Отмена</div>
+                                <!--<button type="submit">Register</button>-->
+                                <div id="save" class="btn btn-success col-md-4 mb-3 mb-md-0">Save</div>
+                                <div id="cancel" class="btn btn-danger col-md-4">Cancel</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

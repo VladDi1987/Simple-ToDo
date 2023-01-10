@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
-const domManipulations = (function () {
+const domService = (function () {
     'use strict';
 
-    let $toDoList = $('#todo'),
-      $projectSelectList = $('#project-list');
+    const $toDoList = $('#todo');
+    const $projectSelectList = $('#project-list');
 
     function destroyToDoList() {
         $toDoList.html('');
@@ -16,11 +16,11 @@ const domManipulations = (function () {
 
     function showDescription(element) {
         if (element.parents().children('p').css('display') === 'none') {
-            element.text('Свернуть');
+            element.text('Open');
             element.parents().children('p').css({'display': 'block'})
         }
         else {
-            element.text('Развернуть');
+            element.text('Close');
             element.parents().children('p').css({'display': 'none'})
         }
     }
@@ -39,4 +39,4 @@ const domManipulations = (function () {
 
 })();
 
-export default domManipulations;
+export default domService;

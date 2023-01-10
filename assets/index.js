@@ -1,3 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../assets/sass/style.sass';
-import '../assets/js/init.js';
+import 'jquery/dist/jquery.min';
+import 'jquery-validation/dist/jquery.validate.min';
+import './style.sass';
+import './index.html';
+import './js/init.js';

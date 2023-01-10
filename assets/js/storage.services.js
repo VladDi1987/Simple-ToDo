@@ -1,6 +1,6 @@
-import dataAccess from '../js/access.Service';
+import dataAccess from './access.service';
 
-const localStorageServices = (function () {
+const storageServices = (function () {
     "use strict";
 
     function setDataToLocalStorage() {
@@ -18,4 +18,4 @@ const localStorageServices = (function () {
 
 })();
 
-export default localStorageServices;
+export default storageServices;
